@@ -1,6 +1,7 @@
 import './TripOverview.css';
 import { Badge, Button, Card, Col, Row, Spinner, Table } from 'react-bootstrap';
 import { Trip } from '../model/trip.model';
+import WaypointsTable from './WaypointsTable';
 
 interface ITripOverviewProps {
   trip: Trip
@@ -39,30 +40,9 @@ const TripOverview = ({
       <div>
         <Row>
           <Col xs={8}>
-          <Table striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>Place</th>
-              <th>City</th>
-              <th>Address</th>
-              <th>Date-Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Departure</td>
-              <td>{propTrip.waypoints[0].place.city}</td>
-              <td>{propTrip.waypoints[0].place.address}</td>
-              <td>{propTrip.waypoints[0].date_time}</td>
-            </tr>
-            <tr>
-              <td>Arrival</td>
-              <td>{propTrip.waypoints[1].place.city}</td>
-              <td>{propTrip.waypoints[1].place.address}</td>
-              <td>{propTrip.waypoints[1].date_time}</td>
-            </tr>
-          </tbody>
-          </Table>
+            <WaypointsTable
+              waypoints={propTrip.waypoints}
+            ></WaypointsTable>
           </Col>
           <Col xs={4}>
             {propTrip.vehicle ? (<h5>Vehicle: {propTrip.vehicle.make} {propTrip.vehicle.model}</h5>) : (<span/>)}
@@ -81,6 +61,6 @@ const TripOverview = ({
       </div>
     </Card.Body>
   </Card>);
-}
+};
 
 export default TripOverview;

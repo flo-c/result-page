@@ -1,6 +1,7 @@
 import './TripDetailsView.css';
 import { Badge, Card, Row, Col, Table, Figure } from 'react-bootstrap';
 import { TripDetails, TripPlanPlace } from '../model/trip.model';
+import TripPlanTable from './TripPlanTable';
 
 interface ITripDetailsViewProps {
   trip: TripDetails
@@ -19,16 +20,6 @@ const TripDetailsView = ({
     return Math.floor(propTrip.duration.value / 3600);
   };
 
-  const getTripPlanPlace = (index: number): string => {
-    if (index === 0) {
-      return 'Departure';
-    }
-    if (index === propTrip.trip_plan.length - 1) {
-      return 'Arrival';
-    }
-    return 'Step Over';
-  };
-
   return (<Card className="trip-details-card">
     <Card.Header>
       {propTrip.departure_place.city_name} - {propTrip.arrival_place.city_name}
@@ -39,26 +30,10 @@ const TripDetailsView = ({
     <div>
         <Row>
           <Col xs={8}>
-          <Table striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>Place</th>
-              <th>City</th>
-              <th>Address</th>
-              <th>Date-Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {propTrip.trip_plan.map((trip: TripPlanPlace, index: number) => (<tr
-              key={`trip-plan-${propTrip.permanent_id}-${index}`}
-            >
-              <td>{getTripPlanPlace(index)}</td>
-              <td>{trip.city}</td>
-              <td>{trip.address}</td>
-              <td>{trip.date}</td>
-            </tr>))}
-          </tbody>
-          </Table>
+            <TripPlanTable
+              tripPlan={propTrip.trip_plan}
+              permanentId={propTrip.permanent_id}
+            ></TripPlanTable>
           </Col>
           <Col xs={4}>
             {propTrip.car ? (<Figure>

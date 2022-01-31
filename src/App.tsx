@@ -76,7 +76,7 @@ const App = ({
       </Row>
     </Container>
   );
-}
+};
 
 export default connect(
   (state: MainState) => ({
