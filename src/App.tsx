@@ -1,4 +1,3 @@
-import './App.css';
 import { Col, Container, Row, Spinner, Button } from 'react-bootstrap';
 import Search from './component/Search';
 import { searchTrips, getTripDetails } from './store/action-thunks';

@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Browsing the result
+
+You can browse the application at [flo-c.github.io](https://flo-c.github.io/).
+
 ## Available Scripts
 
 In the project directory, you can run:
